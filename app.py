@@ -1,12 +1,17 @@
 from flask import Flask, render_template_string, request, redirect, url_for, send_file, session
 import subprocess
+from datetime import datetime
+import os
 
 app = Flask(__name__)
 app.secret_key = "ansible-secret-key"
 
 USERNAME = "admin"
 PASSWORD = "admin123"
+
 last_status = ""
+last_run_time = "Not executed yet"
+last_playbook = "None"
 
 html = """
 <!DOCTYPE html>
@@ -20,6 +25,7 @@ a, button { display:block; margin:12px auto; padding:12px; width:320px; backgrou
 button.run { background:#16a34a; }
 input { padding:10px; margin:8px; width:250px; }
 .status { margin:15px; font-weight:bold; color:#16a34a; }
+.card { background:#f3f4f6; padding:15px; margin:15px auto; border-radius:8px; text-align:left; width:320px; }
 </style>
 </head>
 <body>
@@ -50,6 +56,12 @@ input { padding:10px; margin:8px; width:250px; }
 
 <div class="status">{{ status }}</div>
 
+<div class="card">
+  <b>Last Configured:</b> {{ last_playbook }}<br>
+  <b>Updated Time:</b> {{ last_run_time }}<br>
+  <b>Status:</b> {{ status }}
+</div>
+
 <h2>Download Files</h2>
 <a href="/download/switch_backup.txt">Download Switch Backup</a>
 <a href="/download/vlan_config.txt">Download VLAN Config</a>
@@ -67,7 +79,12 @@ input { padding:10px; margin:8px; width:250px; }
 
 @app.route("/")
 def home():
-    return render_template_string(html, status=last_status)
+    return render_template_string(
+        html,
+        status=last_status,
+        last_playbook=last_playbook,
+        last_run_time=last_run_time
+    )
 
 @app.route("/login", methods=["POST"])
 def login():
@@ -82,7 +99,7 @@ def logout():
 
 @app.route("/run/<playbook>", methods=["POST"])
 def run_playbook(playbook):
-    global last_status
+    global last_status, last_run_time, last_playbook
 
     if not session.get("logged_in"):
         return redirect(url_for("home"))
@@ -101,6 +118,8 @@ def run_playbook(playbook):
 
     if result.returncode == 0:
         last_status = f"{playbook} executed successfully ✅"
+        last_playbook = playbook
+        last_run_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     else:
         last_status = f"{playbook} failed ❌"
 
@@ -112,4 +131,8 @@ def download(filename):
         return redirect(url_for("home"))
     return send_file(filename, as_attachment=True)
 
-app.run(host="0.0.0.0", port=5000)
+if __name__ == "__main__":
+    app.run(
+        host="0.0.0.0",
+        port=int(os.environ.get("PORT", 5000))
+    )
