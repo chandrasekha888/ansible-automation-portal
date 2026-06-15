@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ansible Automation Demo Portal</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      text-align: center;
+      padding: 40px;
+    }
+    .box {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 700px;
+      margin: auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    h1 {
+      color: #1f2937;
+    }
+    p {
+      color: #555;
+    }
+    a {
+      display: block;
+      margin: 12px auto;
+      padding: 12px;
+      width: 320px;
+      background: #2563eb;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+    a:hover {
+      background: #1d4ed8;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>Ansible Automation Demo Portal</h1>
+    <p>Download Ansible playbooks and generated configuration files.</p>
+
+    <h2>Playbooks</h2>
+    <a href="backup.yml" download>Download Backup Playbook</a>
+    <a href="vlan.yml" download>Download VLAN Playbook</a>
+    <a href="interface.yml" download>Download Interface Playbook</a>
+
+    <h2>Generated Configuration Files</h2>
+    <a href="switch_backup.txt" download>Download Switch Backup</a>
+    <a href="vlan_config.txt" download>Download VLAN Config</a>
+    <a href="interface_config.txt" download>Download Interface Config</a>
+
+    <h2>Demo Commands</h2>
+    <a href="demo_commands.txt" download>Download Demo Commands</a>
+  </div>
+</body>
+</html>

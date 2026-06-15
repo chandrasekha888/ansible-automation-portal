@@ -1,0 +1,4 @@
+hostname DEMO-SWITCH
+interface GigabitEthernet0/1
+description Uplink-to-Core
+no shutdown

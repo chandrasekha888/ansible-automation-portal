@@ -1,0 +1,15 @@
+---
+- name: Create VLAN Configuration
+  hosts: local
+  gather_facts: no
+
+  tasks:
+    - name: Create VLAN config file
+      copy:
+        content: |
+          vlan 100
+          name USERS
+          
+          vlan 200
+          name SERVERS
+        dest: ./vlan_config.txt

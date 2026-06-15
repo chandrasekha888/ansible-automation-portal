@@ -1,0 +1,14 @@
+---
+- name: Save sample switch configuration
+  hosts: local
+  gather_facts: no
+
+  tasks:
+    - name: Create configuration backup file
+      copy:
+        content: |
+          hostname DEMO-SWITCH
+          interface GigabitEthernet0/1
+          description Uplink-to-Core
+          no shutdown
+        dest: ./switch_backup.txt

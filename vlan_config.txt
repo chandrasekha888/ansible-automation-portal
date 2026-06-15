@@ -1,0 +1,5 @@
+vlan 100
+name USERS
+
+vlan 200
+name SERVERS

@@ -1,0 +1,15 @@
+ansible --version
+
+cat hosts.ini
+
+cat backup.yml
+ansible-playbook -i hosts.ini backup.yml
+cat switch_backup.txt
+
+cat vlan.yml
+ansible-playbook -i hosts.ini vlan.yml
+cat vlan_config.txt
+
+cat interface.yml
+ansible-playbook -i hosts.ini interface.yml
+cat interface_config.txt

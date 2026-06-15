@@ -1,0 +1,14 @@
+---
+- name: Interface Configuration
+  hosts: local
+  gather_facts: no
+
+  tasks:
+    - name: Create interface config
+      copy:
+        content: |
+          interface GigabitEthernet0/1
+          description Uplink-to-Core
+          switchport mode trunk
+          no shutdown
+        dest: ./interface_config.txt
