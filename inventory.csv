@@ -1,0 +1,5 @@
+name,ip,vendor,role,location,status,last_config
+SW-CORE-01,10.10.10.1,Cisco,Core,Data Center,Success,2026-06-16 11:25:20
+SW-ACCESS-01,10.10.10.2,Cisco,Access,Building 1,Success,2026-06-16 11:25:20
+SW-ACCESS-02,10.10.10.3,Cisco,Access,Building 2,Success,2026-06-16 11:25:20
+SW-DIST-01,10.10.10.4,Arista,Distribution,Data Center,Success,2026-06-16 11:25:20

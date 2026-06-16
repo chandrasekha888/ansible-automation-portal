@@ -1,0 +1,4 @@
+time,user,action,playbook,devices,status
+2026-06-16 11:20:31,admin,Run Playbook,backup.yml,SW-CORE-01,Success
+2026-06-16 11:20:47,admin,Run Playbook,vlan.yml,SW-ACCESS-01,Success
+2026-06-16 11:25:20,admin,Run Playbook,interface.yml,"SW-CORE-01, SW-ACCESS-01, SW-ACCESS-02, SW-DIST-01",Success
