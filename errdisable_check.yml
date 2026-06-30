@@ -1,0 +1,17 @@
+---
+- name: Demo check err-disabled ports
+  hosts: local
+  gather_facts: no
+
+  tasks:
+    - name: Create simulated err-disabled output
+      copy:
+        content: |
+          Port        Name               Status       Reason
+          Gi1/0/24    User-Port          err-disabled bpduguard
+          Gi1/0/30    Camera-Port        err-disabled storm-control
+        dest: ./errdisable_alert.txt
+
+    - name: Show alert
+      debug:
+        msg: "Demo Alert: Err-disabled ports detected. Check errdisable_alert.txt"

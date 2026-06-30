@@ -1,0 +1,15 @@
+
+PLAY [Demo check err-disabled ports] *******************************************
+
+TASK [Create simulated err-disabled output] ************************************
+[WARNING]: Host 'localhost' is using the discovered Python interpreter at '/usr/bin/python3.14', but future installation of another Python interpreter could cause a different interpreter to be discovered. See https://docs.ansible.com/ansible-core/2.20/reference_appendices/interpreter_discovery.html for more information.
+changed: [localhost]
+
+TASK [Show alert] **************************************************************
+ok: [localhost] => {
+    "msg": "Demo Alert: Err-disabled ports detected. Check errdisable_alert.txt"
+}
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
